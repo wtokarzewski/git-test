@@ -5,8 +5,8 @@ echo "1. Git stash - to prevent work loss"
 DATE_STRING=$(date '+%Y-%m-%d_%H-%M-%S')
 git stash push -u -m stash-${DATE_STRING}
 
-echo "2. Checking out to master"
-git checkout master
+echo "2. Checking out to main"
+git checkout main
 
 echo "3. Pulling"
 git pull
@@ -17,6 +17,6 @@ VERSION_NUMBER=$(echo $VERSION_JSON | jq '.data' | sed 's/Current version: //g' 
 echo " ... current version number: ${VERSION_NUMBER}"
 
 echo "5. Create github PRODUCTION release"
-gh release create PRODUCTION-v${VERSION_NUMBER} -t PRODUCTION-v${VERSION_NUMBER} -n "" --target "master"
+gh release create PRODUCTION-v${VERSION_NUMBER} -t PRODUCTION-v${VERSION_NUMBER} -n "" --target "main"
 
 echo "Finished."

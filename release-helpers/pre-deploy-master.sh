@@ -5,8 +5,8 @@ echo "1. Git stash - to prevent work loss"
 DATE_STRING=$(date '+%Y-%m-%d_%H-%M-%S')
 git stash push -u -m stash-${DATE_STRING}
 
-echo "2. Checking out to rc"
-git checkout rc
+echo "2. Checking out to release"
+git checkout release
 
 echo "3. Pulling"
 git pull
@@ -17,7 +17,7 @@ VERSION_NUMBER=$(echo $VERSION_JSON | jq '.data' | sed 's/Current version: //g' 
 echo " ... current version number: ${VERSION_NUMBER}"
 
 echo "5. Creating RELEASE tag"
-gh release create RELEASE-v${VERSION_NUMBER} -t RELEASE-v${VERSION_NUMBER} -n "" --target "rc"
+gh release create RELEASE-v${VERSION_NUMBER} -t RELEASE-v${VERSION_NUMBER} -n "" --target "release"
 
 echo "6. Create PR for release cut tag"
 PR_LINK=$(gh pr create --title "PRODUCTION-v${VERSION_NUMBER}" --base master --body "PRODUCTION version ${VERSION_NUMBER}" | grep "pull/")
