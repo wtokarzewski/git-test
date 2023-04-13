@@ -13,3 +13,9 @@
 3. Go to repository you're working on.
 
 4. Run scripts from release-helpers directory by typing (e.g.): **sh ../path/target_directory/release-helpers/bump-app-version.sh**
+
+5. Release Steps 
+    1. bump-app-version
+    2. rc-cut
+    3. pre-deploy-master
+    4. deploy-master
